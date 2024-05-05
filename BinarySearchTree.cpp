@@ -25,6 +25,8 @@ public:
     void inOrder(struct node *);
     void preOrder(struct node *);
     void postOrder(struct node *);
+    int search(int);
+    int search(int, struct node *);
 };
 
 int main()
@@ -39,7 +41,7 @@ int main()
         printf("-------------Tree-------------\n");
         printf("\nHello\n");
         printf("\n1. Insert\n2. InOrder\n3. PreOrder");
-        printf("\n4. PostOrder\n5. Exit");
+        printf("\n4. PostOrder\n5. Exit\n6. Search");
         printf("\n Enter a choice:");
         scanf("%d", &choice);
         switch (choice)
@@ -66,6 +68,15 @@ int main()
 
         case 5:
             exit(0);
+            break;
+
+        case 6:
+            printf("\nEnter the number to Search : ");
+            scanf("%d", &number);
+            if (tree.search(number))
+                printf("\nInsertion Successful!");
+            else
+                printf("\nInsertion Unsuccessful.");
             break;
 
         default:
@@ -168,5 +179,33 @@ void Tree::postOrder(struct node *temp)
         postOrder(temp->left);
         postOrder(temp->right);
         printf("%d\n", temp->data);
+    }
+}
+
+int Tree::search(int num)
+{
+    return search(num, root);
+}
+
+int Tree::search(int num, struct node *temp)
+{
+    if (temp == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        if (num < temp->data)
+        {
+            search(num, temp->left);
+        }
+        else if (num > temp->data)
+        {
+            search(num, temp->right);
+        }
+        else
+        {
+            return 1;
+        }
     }
 }
