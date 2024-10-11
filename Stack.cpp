@@ -1,5 +1,5 @@
 // Program to implement Stack ADT using Linked Lists
-
+// C Style coding using classes from C++
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
